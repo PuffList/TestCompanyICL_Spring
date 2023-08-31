@@ -1,8 +1,8 @@
 package com.example.CompanyICL_Spring.DTO;
 
 //Создание кастомного Exception
-public class ResourceNotFoundException extends RuntimeException{
-    public ResourceNotFoundException(String message) {
+public class IndexOutOfBoundException extends RuntimeException{
+    public IndexOutOfBoundException(String message) {
         super(message);
     }
 

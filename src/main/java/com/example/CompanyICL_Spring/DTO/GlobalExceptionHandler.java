@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<AppError> catchResourceNotFoundException(ResourceNotFoundException e) {
+    @ExceptionHandler(IndexOutOfBoundException.class)
+    public ResponseEntity<AppError> catchResourceNotFoundException(IndexOutOfBoundException e) {
         log.error(e.getMessage(), e);
         return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), e.getMessage()), HttpStatus.NOT_FOUND);
     }

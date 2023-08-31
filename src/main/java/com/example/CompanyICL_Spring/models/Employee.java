@@ -1,5 +1,6 @@
 package com.example.CompanyICL_Spring.models;
 
+import com.example.CompanyICL_Spring.ENUM.Position;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,8 +26,8 @@ public class Employee {
     @Column(name = "revenue")
     private float revenue;
 
-    public Employee(String position, float income, float revenue) {
-        this.position = position;
+    public Employee(Position position, float income, float revenue) {
+        this.position = position.name();
         this.income = income;
         this.revenue = revenue;
     }

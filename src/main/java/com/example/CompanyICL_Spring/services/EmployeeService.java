@@ -1,8 +1,9 @@
 package com.example.CompanyICL_Spring.services;
 
+import com.example.CompanyICL_Spring.DTO.IndexOutOfBoundException;
+import com.example.CompanyICL_Spring.ENUM.Position;
 import com.example.CompanyICL_Spring.models.Employee;
 import com.example.CompanyICL_Spring.repositories.EmployeeRepository;
-import com.example.CompanyICL_Spring.DTO.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,21 @@ public class EmployeeService {
     }
 
     //Метод добавляющий сотрудника в таблицу
-    public void hire(Employee employee) {
-
+    public void hire(Position position) {
+        Employee employee;
+        switch (position) {
+            case Operator:
+                employee = new Employee(position, 15000, 0);
+                break;
+            case Manager:
+                employee = new Employee(position, 50000, 0);
+                break;
+            case TopManager:
+                employee = new Employee(position, 70000, 0);
+                break;
+            default:
+                throw new IndexOutOfBoundException("Unreal hire Employee with this position");
+        }
         employeeRepository.save(employee);
     }
 
@@ -36,7 +50,7 @@ public class EmployeeService {
             employeeRepository.deleteById(id);
         }
         else {
-            throw new ResourceNotFoundException("Employee with id " + id + " not found");
+            throw new IndexOutOfBoundException("Employee with id " + id + " not found");
         }
     }
 
