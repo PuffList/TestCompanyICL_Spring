@@ -21,20 +21,7 @@ public class EmployeeService {
 
     //Метод добавляющий сотрудника в таблицу
     public void hire(Position position) {
-        Employee employee;
-        switch (position) {
-            case Operator:
-                employee = new Employee(position, 15000, 0);
-                break;
-            case Manager:
-                employee = new Employee(position, 50000, 0);
-                break;
-            case TopManager:
-                employee = new Employee(position, 70000, 0);
-                break;
-            default:
-                throw new IndexOutOfBoundException("Unreal hire Employee with this position");
-        }
+        Employee employee = new Employee(position);
         employeeRepository.save(employee);
     }
 

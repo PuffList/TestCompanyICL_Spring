@@ -26,9 +26,23 @@ public class Employee {
     @Column(name = "revenue")
     private float revenue;
 
-    public Employee(Position position, float income, float revenue) {
-        this.position = position.name();
-        this.income = income;
-        this.revenue = revenue;
+    public Employee(Position position) {
+        switch (position){
+            case Operator:
+                this.position = position.Operator.name();
+                this.income = 15000;
+                this.revenue = 0;
+                break;
+            case Manager:
+                this.position = position.Manager.name();
+                this.income = 50000;
+                this.revenue = 0;
+                break;
+            case TopManager:
+                this.position = position.TopManager.name();
+                this.income = 70000;
+                this.revenue = 0;
+                break;
+        }
     }
 }
